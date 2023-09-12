@@ -41,10 +41,27 @@ resource "aws_security_group" "devopslabs01" {
 
   // Regras de entrada (inbound)
   ingress {
+    description = "Regra para acesso via terminal"
     protocol    = "tcp"
     self        = true
     from_port   = 0
     to_port     = 22
+    cidr_blocks = var.meuip
+  }
+  ingress {
+    description = "Acesso HTTP ao site"
+    protocol    = "tcp"
+    self        = true
+    from_port   = 0
+    to_port     = 80
+    cidr_blocks = var.meuip
+  }
+  ingress {
+    description = "Acesso HTTPS ao site"
+    protocol    = "tcp"
+    self        = true
+    from_port   = 0
+    to_port     = 443
     cidr_blocks = var.meuip
   }
 
