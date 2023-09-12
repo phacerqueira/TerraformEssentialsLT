@@ -45,7 +45,7 @@ resource "aws_security_group" "devopslabs01" {
     self        = true
     from_port   = 0
     to_port     = 22
-    cidr_blocks = ["187.16.183.199/32"]
+    cidr_blocks = var.meuip
   }
 
   // Regras de saída (outbound)
