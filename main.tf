@@ -13,6 +13,7 @@ terraform {
   required_version = ">= 1.2.0"
   backend "s3" {
     bucket = "terraform-phacerqueira"
+    dynamodb_table = "devopslabs01-tfstate-lock"
     key    = "terraform-state.tfstate"
     region = "us-east-1"
   }
