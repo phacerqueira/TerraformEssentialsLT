@@ -1,6 +1,13 @@
 module "servers" {
-  source  = "./Servers"
-  servers = 3
+  source = "./Servers"
+}
+
+module "db" {
+  source = "./databases"
+}
+
+module "networks" {
+  source = "./networking"
 }
 
 output "Ec2_ip_address" {
