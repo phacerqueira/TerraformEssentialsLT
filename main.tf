@@ -14,7 +14,8 @@ terraform {
   backend "s3" {
     bucket = "terraform-phacerqueira"
     //dynamodb_table = "devopslabs01-tfstate-lock" | habilitar para trava do tfstate com dynamodb
-    key    = "terraform-state.tfstate"
-    region = "us-east-1"
+    key     = "terraform-state.tfstate"
+    region  = "us-east-1"
+    encrypt = true
   }
 }
