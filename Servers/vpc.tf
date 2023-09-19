@@ -8,7 +8,7 @@ resource "aws_vpc" "devopslabs01" {
 }
 
 # Criação da ACL de rede para a VPC
-resource "aws_default_network_acl" "devopslabs01" {
+resource "aws_network_acl" "devopslabs01" {
   default_network_acl_id = aws_vpc.devopslabs01.default_network_acl_id
 
   ingress {
@@ -44,7 +44,7 @@ resource "aws_security_group" "devopslabs01" {
     description = "Regra para acesso via terminal"
     protocol    = "tcp"
     self        = true
-    from_port   = 0
+    from_port   = 22
     to_port     = 22
     cidr_blocks = var.meuip
   }
@@ -52,7 +52,7 @@ resource "aws_security_group" "devopslabs01" {
     description = "Acesso HTTP ao site"
     protocol    = "tcp"
     self        = true
-    from_port   = 0
+    from_port   = 80
     to_port     = 80
     cidr_blocks = var.meuip
   }
@@ -60,7 +60,7 @@ resource "aws_security_group" "devopslabs01" {
     description = "Acesso HTTPS ao site"
     protocol    = "tcp"
     self        = true
-    from_port   = 0
+    from_port   = 443
     to_port     = 443
     cidr_blocks = var.meuip
   }
@@ -121,7 +121,7 @@ resource "aws_route" "devopslabs01" {
 }
 
 # Associação da Subnet Pública com a Tabela de Roteamento
-resource "aws_route_table_association" "tcb_blog_pub_association" {
+resource "aws_route_table_association" "devopslabs01" {
   subnet_id      = aws_subnet.devopslabs01.id
   route_table_id = aws_route_table.devopslabs01.id
 }
