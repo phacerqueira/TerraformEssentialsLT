@@ -1,5 +1,5 @@
 variable "servers" {
-    default = 1  
+    default = 2  
 }
 
 variable "meuip" {

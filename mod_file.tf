@@ -1,6 +1,6 @@
 module "servers" {
   source  = "./Servers"
-  servers = 3
+  servers = 2
 }
 
 output "Ec2_ip_address" {
